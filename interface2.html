@@ -1,68 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>BRECRIKE 1.0 Menu</title>
-    <style>
-        body {
-            background-color: #1c1c1c;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .menu {
-            display: flex;
-            height: 100vh;
-        }
-        .sidebar {
-            width: 200px;
-            background-color: #202020;
-            padding: 20px;
-        }
-        .sidebar h1 {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            margin: 10px 0;
-            padding: 8px;
-            background-color: #2b2b2b;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .sidebar ul li:hover {
-            background-color: #3a3a3a;
-        }
-        .content {
-            flex: 1;
-            padding: 20px;
-            background-color: #2a2a2a;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>interface2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #f0f0f0;
+      border-radius: 8px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .preview {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .preview img {
+      max-width: 100%;
+      max-height: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="file"] {
+      display: block;
+      margin: 1rem auto;
+    }
+  </style>
 </head>
 <body>
-    <div class="menu">
-        <div class="sidebar">
-            <h1>BRECRIKE 1.0</h1>
-            <ul>
-                <li>Jogador</li>
-                <li>Veículos</li>
-                <li>Armas</li>
-                <li>Online</li>
-                <li>Destruição</li>
-                <li>Aimbot</li>
-                <li>Visual</li>
-                <li>Config</li>
-            </ul>
-        </div>
-        <div class="content">
-            <!-- Aqui você pode colocar o conteúdo das opções -->
-        </div>
-    </div>
+  <h1>Upload de Imagem</h1>
+  <input type="interface2" id="imageInput" accept="interface2">
+  <div class="preview" id="preview">
+    <p>Nenhuma imagem selecionada</p>
+  </div>
+
+  <script>
+    const input = document.getElementById('imageInput');
+    const preview = document.getElementById('preview');
+
+    input.addEventListener('change', () => {
+      const file = input.files[0];
+      if (!file) {
+        preview.innerHTML = '<p>Nenhuma imagem selecionada</p>';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = e => {
+        preview.innerHTML = <img src="${e.target.result}" alt="Preview da imagem">;
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
 </body>
 </html>
